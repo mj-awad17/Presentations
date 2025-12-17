@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NumPy Presentation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="presentation-page numpy-bg">
+    <div class="back-home">
+        <a class="back-home-btn" href="index.html">← Home</a>
+    </div>
+    <div class="presentation-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active title-slide">
+            <h1 class="numpy-title">NumPy</h1>
+            <p>Numerical Python for High-Performance Computing</p>
+            <p style="margin-top: 20px; color: #999;">A Comprehensive Guide</p>
+        </div>
+
+        <!-- Slide 2: Introduction -->
+        <div class="slide">
+            <h2 class="slide-header">1. Introduction to NumPy</h2>
+            <div class="slide-content">
+                <p><strong>NumPy (Numerical Python)</strong> is a powerful open-source Python library designed for
+                    efficient numerical computing. It supports large multi-dimensional arrays and matrices with
+                    high-performance mathematical functions.</p>
+
+                <h3>Why Use NumPy?</h3>
+                <ul>
+                    <li><span class="highlight">Speed:</span> Operations implemented in C for enhanced performance</li>
+                    <li><span class="highlight">Memory Efficiency:</span> Contiguous memory blocks for arrays</li>
+                    <li><span class="highlight">Mathematical Capabilities:</span> Extensive mathematical, statistical,
+                        and algebraic operations</li>
+                    <li><span class="highlight">Vectorization:</span> Batch operations without explicit loops</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 3: NumPy in Data Science -->
+        <div class="slide">
+            <h2 class="slide-header">NumPy in Data Science & ML</h2>
+            <div class="slide-content">
+                <h3>Core Applications</h3>
+                <p>NumPy provides efficient operations on numerical data, essential for:</p>
+                <ul>
+                    <li><strong>scikit-learn:</strong> Handling data in machine learning algorithms</li>
+                    <li><strong>pandas:</strong> Data structures for structured data manipulation</li>
+                    <li><strong>matplotlib:</strong> Plotting and visualization</li>
+                </ul>
+
+                <h3>Central Object: ndarray</h3>
+                <p>The multidimensional array (<strong>ndarray</strong>) allows efficient storage and manipulation of
+                    numerical data.</p>
+
+                <h3>Performance Advantages</h3>
+                <ul>
+                    <li>Homogeneous data types for efficient memory usage</li>
+                    <li>Contiguous memory allocation</li>
+                    <li>Vectorized operations implemented in C</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 4: Installation & Setup -->
+        <div class="slide">
+            <h2 class="slide-header">Installation and Setup</h2>
+            <div class="slide-content">
+                <h3>Installing NumPy</h3>
+                <div class="code-block">pip install numpy</div>
+
+                <h3>Importing NumPy</h3>
+                <div class="code-block">import numpy as np</div>
+
+                <h3>Check Version</h3>
+                <div class="code-block">print("Version", np.__version__)</div>
+
+                <h3>Advantages of NumPy</h3>
+                <ul>
+                    <li>Speed and performance optimization</li>
+                    <li>Memory efficiency</li>
+                    <li>Rich ecosystem of scientific libraries</li>
+                </ul>
+
+                <h3>Limitations</h3>
+                <ul>
+                    <li>No native GPU support</li>
+                    <li>Learning curve for beginners</li>
+                    <li>Fixed data types after creation</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 5: Creating Arrays -->
+        <div class="slide">
+            <h2 class="slide-header">2. NumPy Arrays</h2>
+            <div class="slide-content">
+                <h3>Creating Arrays</h3>
+                <div class="code-block">arr = np.array([1, 2, 3, 4, 5]) <br/>
+                    print(arr)</div>
+                <div class="output-block">[1 2 3 4 5]</div>
+
+                <h3>Data Types</h3>
+                <div class="code-block">arr = np.array([1, 2, 3], dtype=np.float64) <br/>
+                    print(arr.dtype)</div>
+                <div class="output-block">float64</div>
+
+                <p>NumPy arrays support multiple data types: <strong>int32, float64, complex128</strong></p>
+            </div>
+        </div>
+
+        <!-- Slide 6: Shape and Reshape -->
+        <div class="slide">
+            <h2 class="slide-header">Shape and Reshaping</h2>
+            <div class="slide-content">
+                <h3>Shape Property</h3>
+                <div class="code-block">arr2D = np.array([[1, 2, 3], [4, 5, 6]]) <br/>
+                    print(arr2D.shape)</div>
+                <div class="output-block">(2, 3)</div>
+
+                <h3>Reshape Method</h3>
+                <div class="code-block">reshaped = arr2D.reshape(3, 2) <br/>
+                    print(reshaped)</div>
+                <div class="output-block">[[1 2] <br/>
+                    [3 4] <br/>
+                    [5 6]]</div>
+
+                <h3>Indexing and Slicing</h3>
+                <div class="code-block">arr = np.array([10, 20, 30, 40, 50]) <br/>
+                    print(arr[1:4])</div>
+                <div class="output-block">[20, 30, 40]</div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Array Operations -->
+        <div class="slide">
+            <h2 class="slide-header">3. Array Operations</h2>
+            <div class="slide-content">
+                <h3>Mathematical Operations</h3>
+                <div class="code-block">a = np.array([1, 2, 3]) <br/>
+                    b = np.array([4, 5, 6]) <br/>
+                    print(a + b) <br/>
+                    print(a * b)</div>
+                <div class="output-block">[5, 7, 9] <br/>
+                    [4, 10, 18]</div>
+
+                <h3>Aggregations</h3>
+                <div class="code-block">arr = np.array([1, 2, 3, 4, 5]) <br/>
+                    print(np.sum(arr)) # 15 <br/>
+                    print(np.mean(arr)) # 3.0 <br/>
+                    print(np.max(arr)) # 5 <br/>
+                    print(np.min(arr)) # 1</div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Broadcasting -->
+        <div class="slide">
+            <h2 class="slide-header">Broadcasting</h2>
+            <div class="slide-content">
+                <p>Broadcasting enables operations on arrays of different shapes without explicit loops.</p>
+
+                <h3>Example</h3>
+                <div class="code-block">arr = np.array([[1], [2], [3]]) <br/>
+                    print(arr + np.array([10, 20, 30]))</div>
+                <div class="output-block">[[11 21 31] <br/>
+                    [12 22 32] <br/>
+                    [13 23 33]]</div>
+
+                <p style="margin-top: 20px;">The 1D array is automatically "broadcast" across the 2D array, eliminating
+                    the need for manual looping.</p>
+            </div>
+        </div>
+
+        <!-- Slide 9: Linear Algebra -->
+        <div class="slide">
+            <h2 class="slide-header">4. NumPy Linear Algebra</h2>
+            <div class="slide-content">
+                <h3>Matrix Multiplication (dot product)</h3>
+                <p>The dot product is the sum of the product of corresponding entries.</p>
+                <div class="code-block">A = np.array([[1, 2], [3, 4]]) <br/>
+                    B = np.array([[5, 6], [7, 8]]) <br/>
+                    print(np.dot(A, B))</div>
+                <div class="output-block">[[19 22] <br/>
+                    [43 50]]</div>
+
+                <h3>Example: Vector Dot Product</h3>
+                <p>a = (1, 2, 3), b = (4, −5, 6)</p>
+                <p>a · b = (1×4) + (2×−5) + (3×6) = 4 − 10 + 18 = <strong>12</strong></p>
+            </div>
+        </div>
+
+        <!-- Slide 10: Eigenvalues -->
+        <div class="slide">
+            <h2 class="slide-header">Eigenvalues and Eigenvectors</h2>
+            <div class="slide-content">
+                <h3>Definition</h3>
+                <p><strong>Eigenvalues (λ):</strong> Scalars indicating stretch/compression of eigenvectors</p>
+                <p><strong>Eigenvectors (v):</strong> Vectors that remain in same direction after transformation</p>
+                <p style="margin: 20px 0;">Mathematical formula: <strong>Av = λv</strong></p>
+
+                <h3>Computing Eigenvalues</h3>
+                <div class="code-block">eigenvalues, eigenvectors = np.linalg.eig(A) <br/>
+                    print("Eigenvalues:", eigenvalues) <br/>
+                    print("Eigenvectors:", eigenvectors)</div>
+                <div class="output-block">Eigenvalues: [5. 2.] <br/>
+
+                    Eigenvectors: <br/>
+                    [[-0.70710678 -0.4472136 ] <br/>
+                    [-0.70710678 0.89442719]]</div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Determinants -->
+        <div class="slide">
+            <h2 class="slide-header">Determinants and Inverse</h2>
+            <div class="slide-content">
+                <h3>Definitions</h3>
+                <p><strong>Determinant:</strong> Scalar value summarizing a matrix, determines invertibility</p>
+                <p><strong>Inverse:</strong> Matrix A⁻¹ where A·A⁻¹ = I (identity matrix)</p>
+
+                <h3>Computing Determinant and Inverse</h3>
+                <div class="code-block">det = np.linalg.det(A) <br/>
+                    inverse = np.linalg.inv(A) <br/>
+                    print("Det:", det) <br/>
+                    print("Inverse:", inverse)</div>
+                <div class="output-block">Det: -2.0000000000000004 <br/>
+                    Inverse: [[-2. 1. ] <br/>
+                    [ 1.5 -0.5]]</div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Random Numbers -->
+        <div class="slide">
+            <h2 class="slide-header">5. Working with Random Numbers</h2>
+            <div class="slide-content">
+                <h3>Generating Random Arrays</h3>
+                <div class="code-block">rand_array = np.random.rand(3, 3) # Uniform distribution <br/>
+                    print(rand_array)</div>
+                <div class="output-block">[[0.99066477 0.11406155 0.35680719] <br/>
+                    [0.43172753 0.49088338 0.0294701 ] <br/>
+                    [0.04031165 0.14007782 0.98851497]]</div>
+
+                <h3>Random Sampling</h3>
+                <div class="code-block">sample = np.random.choice([10, 20, 30, 40], size=5) <br/>
+                    print(sample)</div>
+                <div class="output-block">[20 30 10 30 40]</div>
+
+                <h3>Setting Random Seed (Reproducibility)</h3>
+                <div class="code-block">np.random.seed(42) <br/>
+                    print(np.random.rand(3, 3))</div>
+            </div>
+        </div>
+
+        <!-- Slide 13: Data Analysis -->
+        <div class="slide">
+            <h2 class="slide-header">6. NumPy for Data Analysis</h2>
+            <div class="slide-content">
+                <h3>Loading and Saving Data</h3>
+                <div class="code-block">np.savetxt("data.csv", arr, delimiter=",") <br/>
+                    loaded_arr = np.loadtxt("data.csv", delimiter=",") <br/>
+                    print(loaded_arr)</div>
+                <div class="output-block">[1. 2. 3.]</div>
+
+                <h3>Handling Missing Data</h3>
+                <div class="code-block">data = np.array([1, 2, np.nan, 4]) <br/>
+                    print(np.isnan(data))</div>
+                <div class="output-block">[False False True False]</div>
+
+                <h3>Sorting and Searching</h3>
+                <div class="code-block">arr = np.array([4, 2, 9, 1]) <br/>
+                    print(np.sort(arr)) <br/>
+                    print(np.argsort(arr)) # Indices</div>
+                <div class="output-block">[1 2 4 9] <br/>
+                    [3 1 0 2]</div>
+            </div>
+        </div>
+
+        <!-- Slide 14: Performance -->
+        <div class="slide">
+            <h2 class="slide-header">7. Performance Optimization</h2>
+            <div class="slide-content">
+                <h3>Vectorization vs Python Loops</h3>
+                <p>Vectorization dramatically improves performance for large-scale computations.</p>
+
+                <h3>Performance Comparison</h3>
+                <div class="code-block">size = 1000000 <br/>
+
+                    # Python List <br/>
+                    list1 = list(range(size)) <br/>
+                    list2 = list(range(size)) <br/>
+                    result = [x + y for x, y in zip(list1, list2)] <br/>
+
+                    # NumPy Array <br/>
+                    arr1 = np.arange(size) <br/>
+                    arr2 = np.arange(size) <br/>
+                    result = arr1 + arr2</div>
+                <div class="output-block">Python List Time: 0.267 seconds <br/>
+                    NumPy Time: 0.031 seconds <br/>
+
+                    <strong>NumPy is ~8.5x faster!</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 15: Advanced Functions -->
+        <div class="slide">
+            <h2 class="slide-header">8. Advanced NumPy Functions</h2>
+            <div class="slide-content">
+                <h3>Meshgrid</h3>
+                <p>Creates rectangular grids from 1D arrays for 3D plotting and computations.</p>
+                <div class="code-block">x = np.linspace(-5, 5, 3) <br/>
+                    y = np.linspace(-5, 5, 3) <br/>
+                    X, Y = np.meshgrid(x, y)</div>
+                <div class="output-block">X: <br/>
+                    [[-5. 0. 5.] <br/>
+                    [-5. 0. 5.] <br/>
+                    [-5. 0. 5.]] <br/>
+                    Y: <br/>
+                    [[-5. -5. -5.] <br/>
+                    [ 0. 0. 0.] <br/>
+                    [ 5. 5. 5.]]</div>
+
+                <h3>Fancy Indexing</h3>
+                <div class="code-block">arr = np.array([10, 20, 30, 40]) <br/>
+                    indices = [0, 2] <br/>
+                    print(arr[indices])</div>
+                <div class="output-block">[10 30]</div>
+            </div>
+        </div>
+
+        <!-- Slide 16: ML Applications -->
+        <div class="slide">
+            <h2 class="slide-header">9. NumPy in Machine Learning</h2>
+            <div class="slide-content">
+                <h3>Feature Scaling</h3>
+                <p>Normalizes or standardizes the range of features in a dataset.</p>
+                <div class="code-block">from sklearn.preprocessing import StandardScaler <br/>
+
+                    data = np.array([[1, 2], [3, 4], [5, 6]]) <br/>
+                    scaler = StandardScaler() <br/>
+                    scaled_data = scaler.fit_transform(data) <br/>
+                    print(scaled_data)</div>
+                <div class="output-block">[[-1.22474487 -1.22474487] <br/>
+                    [ 0. 0. ] <br/>
+                    [ 1.22474487 1.22474487]]</div>
+
+                <h3>Image Processing</h3>
+                <div class="code-block">import cv2 <br/>
+                    image = cv2.imread("image.jpg", 0) <br/>
+                    print(image.shape)</div>
+            </div>
+        </div>
+
+        <!-- Slide 17: Conclusion -->
+        <div class="slide">
+            <h2 class="slide-header">10. Conclusion</h2>
+            <div class="slide-content">
+                <h3>Key Takeaways</h3>
+                <ul>
+                    <li><strong>Essential Tool:</strong> NumPy is fundamental for numerical computing in Python</li>
+                    <li><strong>Performance:</strong> Dramatically faster than native Python for numerical operations
+                    </li>
+                    <li><strong>Versatile:</strong> Powers data science, machine learning, and computer vision</li>
+                    <li><strong>Foundation:</strong> Underlies major libraries like pandas, scikit-learn, and TensorFlow
+                    </li>
+                </ul>
+
+                <h3>Applications</h3>
+                <p>NumPy excels in:</p>
+                <ul>
+                    <li>Data manipulation and analysis</li>
+                    <li>Linear algebra and matrix operations</li>
+                    <li>Statistical computations</li>
+                    <li>Scientific computing</li>
+                    <li>Machine learning preprocessing</li>
+                </ul>
+
+                <p style="margin-top: 30px; text-align: center; font-size: 1.3em; color: #667eea;"><strong>Master NumPy
+                        to unlock the full potential of data science!</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-counter">
+        <span id="current-slide">1</span> / <span id="total-slides">17</span>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn numpy-btn-nav" id="prev-btn">← Previous</button>
+        <button class="nav-btn numpy-btn-nav" id="next-btn">Next →</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const currentSlideSpan = document.getElementById('current-slide');
+        const totalSlidesSpan = document.getElementById('total-slides');
+
+        totalSlidesSpan.textContent = totalSlides;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            currentSlideSpan.textContent = currentSlide + 1;
+
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === totalSlides - 1;
+        }
+
+        prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
+        nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
+            if (e.key === 'ArrowRight') showSlide(currentSlide + 1);
+        });
+
+        showSlide(0);
+    </script>
+</body>
+
+</html>
