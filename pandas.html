@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pandas Presentation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="presentation-page pandas-bg">
+    <div class="back-home">
+        <a class="back-home-btn" href="index.html">← Home</a>
+    </div>
+    <div class="presentation-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active title-slide">
+            <h1 class="pandas-title">Pandas</h1>
+            <p>Python Data Analysis Library</p>
+            <p style="margin-top: 20px; color: #999;">Powerful Data Structures and Analysis Tools</p>
+        </div>
+
+        <!-- Slide 2: Introduction -->
+        <div class="slide">
+            <h2 class="slide-header">Introduction to Pandas</h2>
+            <div class="slide-content">
+                <p><strong>Pandas</strong> is an open-source Python library providing high-performance, easy-to-use data
+                    structures and data analysis tools. Built on top of NumPy, it's the go-to tool for data manipulation
+                    and analysis.</p>
+
+                <h3>What is Pandas?</h3>
+                <ul>
+                    <li><span class="highlight">Data Manipulation:</span> Easy-to-use data structures for structured
+                        data</li>
+                    <li><span class="highlight">Data Analysis:</span> Powerful tools for data exploration and analysis
+                    </li>
+                    <li><span class="highlight">Data Cleaning:</span> Handle missing data, duplicates, and
+                        transformations</li>
+                    <li><span class="highlight">Integration:</span> Seamlessly works with NumPy, Matplotlib, and
+                        scikit-learn</li>
+                </ul>
+
+                <h3>Why Use Pandas?</h3>
+                <ul>
+                    <li>Handles tabular data efficiently (like Excel or SQL tables)</li>
+                    <li>Intuitive syntax for data operations</li>
+                    <li>Built-in visualization capabilities</li>
+                    <li>Excellent for ETL (Extract, Transform, Load) operations</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 3: Core Data Structures -->
+        <div class="slide">
+            <h2 class="slide-header">Pandas Core Data Structures</h2>
+            <div class="slide-content">
+                <div class="feature-box">
+                    <h4>Series (1-Dimensional)</h4>
+                    <p>One-dimensional labeled array capable of holding any data type</p>
+                </div>
+
+                <div class="feature-box">
+                    <h4>DataFrame (2-Dimensional)</h4>
+                    <p>Two-dimensional labeled data structure with columns of potentially different types</p>
+                </div>
+
+                <h3>Installation and Setup</h3>
+                <div class="code-block">pip install pandas</div>
+
+                <h3>Importing Pandas</h3>
+                <div class="code-block">import pandas as pd <br />
+                    import numpy as np</div>
+
+                <h3>Check Version</h3>
+                <div class="code-block">print(pd.__version__)</div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Series - Introduction -->
+        <div class="slide">
+            <h2 class="slide-header">Pandas Series</h2>
+            <div class="slide-content">
+                <h3>What is a Series?</h3>
+                <p>A Series is a <strong>one-dimensional labeled array</strong> that can hold any data type (integers,
+                    strings, floats, Python objects, etc.). Think of it as a single column in a spreadsheet.</p>
+
+                <h3>Creating a Series</h3>
+                <div class="code-block"># From a list <br />
+                    data = [10, 20, 30, 40, 50] <br />
+                    series = pd.Series(data) <br />
+                    print(series)</div>
+                <div class="output-block">0 10 <br />
+                    1 20 <br />
+                    2 30 <br />
+                    3 40 <br />
+                    4 50 <br />
+                    dtype: int64</div>
+
+                <h3>Series with Custom Index</h3>
+                <div class="code-block">series = pd.Series([10, 20, 30, 40, 50], index=['a', 'b', 'c', 'd', 'e']) <br />
+                    print(series)</div>
+                <div class="output-block">a 10 <br />
+                    b 20 <br />
+                    c 30 <br />
+                    d 40 <br />
+                    e 50 <br />
+                    dtype: int64</div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Series - Creation Methods -->
+        <div class="slide">
+            <h2 class="slide-header">Series Creation Methods</h2>
+            <div class="slide-content">
+                <h3>From Dictionary</h3>
+                <div class="code-block">data_dict = {'a': 10, 'b': 20, 'c': 30} <br />
+                    series = pd.Series(data_dict) <br />
+                    print(series)</div>
+                <div class="output-block">a 10 <br />
+                    b 20 <br />
+                    c 30 <br />
+                    dtype: int64</div>
+
+                <h3>From NumPy Array</h3>
+                <div class="code-block">arr = np.array([1, 2, 3, 4, 5]) <br />
+                    series = pd.Series(arr, index=['v', 'w', 'x', 'y', 'z']) <br />
+                    print(series)</div>
+
+                <h3>From Scalar Value</h3>
+                <div class="code-block">series = pd.Series(5, index=[0, 1, 2, 3]) <br />
+                    print(series)</div>
+                <div class="output-block">0 5 <br />
+                    1 5 <br />
+                    2 5 <br />
+                    3 5 <br />
+                    dtype: int64</div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Series - Operations -->
+        <div class="slide">
+            <h2 class="slide-header">Series Operations</h2>
+            <div class="slide-content">
+                <h3>Accessing Elements</h3>
+                <div class="code-block">series = pd.Series([10, 20, 30, 40], index=['a', 'b', 'c', 'd']) <br />
+
+                    # By index label <br />
+                    print(series['b']) # 20 <br />
+
+                    # By position <br />
+                    print(series[0]) # 10 <br />
+
+                    # Slicing <br />
+                    print(series['a':'c']) # a, b, c elements</div>
+
+                <h3>Arithmetic Operations</h3>
+                <div class="code-block">series1 = pd.Series([1, 2, 3, 4]) <br />
+                    series2 = pd.Series([10, 20, 30, 40]) <br />
+
+                    print(series1 + series2) # Element-wise addition <br />
+                    print(series1 * 2) # Scalar multiplication</div>
+                <div class="output-block">0 11 <br />
+                    1 22 <br />
+                    2 33 <br />
+                    3 44 <br />
+                    dtype: int64</div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Series - Common Methods -->
+        <div class="slide">
+            <h2 class="slide-header">Series Common Methods</h2>
+            <div class="slide-content">
+                <div class="code-block">series = pd.Series([10, 20, 30, 40, 50]) <br />
+
+                    # Statistical methods
+                    print(series.sum()) # 150 <br />
+                    print(series.mean()) # 30.0 <br />
+                    print(series.median()) # 30.0 <br />
+                    print(series.std()) # Standard deviation <br />
+                    print(series.describe()) # Summary statistics</div>
+
+                <h3>Other Useful Methods</h3>
+                <div class="code-block"># Value counts <br />
+                    series = pd.Series(['A', 'B', 'A', 'C', 'B', 'A']) <br />
+                    print(series.value_counts()) <br />
+
+                    # Unique values <br />
+                    print(series.unique()) <br />
+
+                    # Check for null values <br />
+                    print(series.isnull())</div>
+                <div class="output-block">A 3 <br />
+                    B 2 <br />
+                    C 1 <br />
+                    dtype: int64</div>
+            </div>
+        </div>
+
+        <!-- Slide 8: DataFrame - Introduction -->
+        <div class="slide">
+            <h2 class="slide-header">Pandas DataFrame</h2>
+            <div class="slide-content">
+                <h3>What is a DataFrame?</h3>
+                <p>A DataFrame is a <strong>two-dimensional labeled data structure</strong> with columns of potentially
+                    different types. It's like a spreadsheet or SQL table.</p>
+
+                <h3>Key Features</h3>
+                <ul>
+                    <li>Rows and columns with labels (indices)</li>
+                    <li>Different data types per column</li>
+                    <li>Size mutable (can add/delete columns)</li>
+                    <li>Powerful data manipulation capabilities</li>
+                </ul>
+
+                <h3>Creating a DataFrame</h3>
+                <div class="code-block">data = { <br />
+                    'Name': ['Alice', 'Bob', 'Charlie', 'David'], <br />
+                    'Age': [25, 30, 35, 40], <br />
+                    'City': ['New York', 'London', 'Paris', 'Tokyo'] <br />
+                    }
+                    df = pd.DataFrame(data) <br />
+                    print(df)</div>
+            </div>
+        </div>
+
+        <!-- Slide 9: DataFrame - Output Example -->
+        <div class="slide">
+            <h2 class="slide-header">DataFrame Structure</h2>
+            <div class="slide-content">
+                <h3>DataFrame Output</h3>
+                <div class="output-block"> Name Age City <br />
+                    0 Alice 25 New York <br />
+                    1 Bob 30 London <br />
+                    2 Charlie 35 Paris <br />
+                    3 David 40 Tokyo</div>
+
+                <h3>DataFrame Anatomy</h3>
+                <ul>
+                    <li><span class="highlight">Index:</span> Row labels (0, 1, 2, 3...)</li>
+                    <li><span class="highlight">Columns:</span> Column names (Name, Age, City)</li>
+                    <li><span class="highlight">Values:</span> The actual data in cells</li>
+                    <li><span class="highlight">dtypes:</span> Data types of each column</li>
+                </ul>
+
+                <div class="code-block"># View basic information
+                    print(df.info()) <br />
+                    print(df.dtypes) <br />
+                    print(df.shape) # (4, 3) - 4 rows, 3 columns</div>
+            </div>
+        </div>
+
+        <!-- Slide 10: DataFrame - Creation Methods -->
+        <div class="slide">
+            <h2 class="slide-header">DataFrame Creation Methods</h2>
+            <div class="slide-content">
+                <h3>From Dictionary of Lists</h3>
+                <div class="code-block">data = { <br />
+                    'Product': ['Laptop', 'Mouse', 'Keyboard'], <br />
+                    'Price': [1000, 25, 75], <br />
+                    'Stock': [50, 200, 150] <br />
+                    }
+                    df = pd.DataFrame(data) <br />
+                </div>
+
+                <h3>From List of Dictionaries</h3>
+                <div class="code-block">data = [ <br />
+                    {'Name': 'Alice', 'Age': 25, 'City': 'NYC'}, <br />
+                    {'Name': 'Bob', 'Age': 30, 'City': 'LA'}, <br />
+                    {'Name': 'Charlie', 'Age': 35, 'City': 'SF'} <br />
+                    ]
+                    df = pd.DataFrame(data)</div>
+
+                <h3>From NumPy Array</h3>
+                <div class="code-block">arr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]) <br />
+                    df = pd.DataFrame(arr, columns=['A', 'B', 'C'])</div>
+            </div>
+        </div>
+
+        <!-- Slide 11: DataFrame - Reading Data -->
+        <div class="slide">
+            <h2 class="slide-header">Reading Data into DataFrame</h2>
+            <div class="slide-content">
+                <h3>From CSV File</h3>
+                <div class="code-block">df = pd.read_csv('data.csv') <br />
+
+                    # With custom parameters <br />
+                    df = pd.read_csv('data.csv', <br />
+                    sep=',', # Delimiter <br />
+                    header=0, # Row for column names <br />
+                    index_col=0) # Column to use as index</div>
+
+                <h3>From Excel File</h3>
+                <div class="code-block">df = pd.read_excel('data.xlsx', sheet_name='Sheet1')</div>
+
+                <h3>From JSON</h3>
+                <div class="code-block">df = pd.read_json('data.json')</div>
+
+                <h3>From SQL Database</h3>
+                <div class="code-block">import sqlite3 <br />
+                    conn = sqlite3.connect('database.db') <br />
+                    df = pd.read_sql_query("SELECT * FROM table_name", conn)</div>
+            </div>
+        </div>
+
+        <!-- Slide 12: DataFrame - Viewing Data -->
+        <div class="slide">
+            <h2 class="slide-header">Viewing and Inspecting Data</h2>
+            <div class="slide-content">
+                <h3>Basic Viewing Methods</h3>
+                <div class="code-block"># First n rows (default 5) <br />
+                    df.head() <br />
+                    df.head(10) <br />
+
+                    # Last n rows (default 5) <br />
+                    df.tail() <br />
+                    df.tail(10) <br />
+
+                    # Random sample of n rows <br />
+                    df.sample(5)</div>
+
+                <h3>Data Information</h3>
+                <div class="code-block"># Shape (rows, columns) <br />
+                    print(df.shape) <br />
+
+                    # Column names <br />
+                    print(df.columns) <br />
+                    # Index values <br />
+                    print(df.index) <br />
+
+                    # Data types <br />
+                    print(df.dtypes) <br />
+
+                    # Summary statistics <br />
+                    print(df.describe()) <br />
+
+                    # Detailed info <br />
+                    print(df.info())</div>
+            </div>
+        </div>
+
+        <!-- Slide 13: DataFrame - Selecting Data -->
+        <div class="slide">
+            <h2 class="slide-header">Selecting Data from DataFrame</h2>
+            <div class="slide-content">
+                <h3>Selecting Columns</h3>
+                <div class="code-block"># Single column (returns Series)
+                    df['Name'] <br />
+
+                    # Multiple columns (returns DataFrame) <br />
+                    df[['Name', 'Age']]</div>
+
+                <h3>Selecting Rows</h3>
+                <div class="code-block"># By label (loc) <br />
+                    df.loc[0] # First row
+                    df.loc[0:2] # Rows 0 to 2
+
+                    # By position (iloc) <br />
+                    df.iloc[0] # First row <br />
+                    df.iloc[0:3] # First 3 rows <br />
+                    df.iloc[:, 0:2] # All rows, first 2 columns</div>
+
+                <h3>Conditional Selection</h3>
+                <div class="code-block"># Filter rows <br />
+                    df[df['Age'] > 30] <br />
+                    df[df['City'] == 'New York'] <br />
+                    df[(df['Age'] > 25) & (df['City'] == 'London')]</div>
+            </div>
+        </div>
+
+        <!-- Slide 14: Common Methods - Part 1 -->
+        <div class="slide">
+            <h2 class="slide-header">Common Pandas Methods (Part 1)</h2>
+            <div class="slide-content">
+                <h3>1. head() and tail()</h3>
+                <div class="code-block">df.head(5) # First 5 rows <br />
+                    df.tail(3) # Last 3 rows</div>
+
+                <h3>2. info()</h3>
+                <div class="code-block">df.info() # Data types, non-null counts, memory usage</div>
+
+                <h3>3. describe()</h3>
+                <div class="code-block">df.describe() # Statistical summary (numeric columns)<br />
+                    df.describe(include='all') # All columns</div>
+
+                <h3>4. shape, columns, index</h3>
+                <div class="code-block">df.shape # (rows, columns)<br />
+                    df.columns # Column names<br />
+                    df.index # Index values</div>
+
+                <h3>5. dtypes</h3>
+                <div class="code-block">df.dtypes # Data type of each column</div>
+            </div>
+        </div>
+
+        <!-- Slide 15: Common Methods - Part 2 -->
+        <div class="slide">
+            <h2 class="slide-header">Common Pandas Methods (Part 2)</h2>
+            <div class="slide-content">
+                <h3>6. isnull() and notnull()</h3>
+                <div class="code-block">df.isnull() # Returns True for missing values<br />
+                    df.notnull() # Returns True for non-missing values<br />
+                    df.isnull().sum() # Count of missing values per column</div>
+
+                <h3>7. dropna()</h3>
+                <div class="code-block">df.dropna() # Drop rows with any null values<br />
+                    df.dropna(axis=1) # Drop columns with any null<br />
+                    df.dropna(subset=['Age']) # Drop rows where Age is null</div>
+
+                <h3>8. fillna()</h3>
+                <div class="code-block">df.fillna(0) # Fill null with 0<br />
+                    df.fillna(df.mean()) # Fill with mean<br />
+                    df['Age'].fillna(df['Age'].mean(), inplace=True)</div>
+
+                <h3>9. drop()</h3>
+                <div class="code-block">df.drop('Name', axis=1) # Drop column<br />
+                    df.drop([0, 1], axis=0) # Drop rows</div>
+            </div>
+        </div>
+
+        <!-- Slide 16: Common Methods - Part 3 -->
+        <div class="slide">
+            <h2 class="slide-header">Common Pandas Methods (Part 3)</h2>
+            <div class="slide-content">
+                <h3>10. sort_values()</h3>
+                <div class="code-block">df.sort_values('Age') # Ascending<br />
+                    df.sort_values('Age', ascending=False) # Descending<br />
+                    df.sort_values(['City', 'Age']) # Multiple columns</div>
+
+                <h3>11. groupby()</h3>
+                <div class="code-block">df.groupby('City').mean() # Group and aggregate<br />
+                    df.groupby('City')['Age'].sum() # Specific column<br />
+                    df.groupby(['City', 'Gender']).count() # Multiple groups</div>
+
+                <h3>12. value_counts()</h3>
+                <div class="code-block">df['City'].value_counts() # Frequency count<br />
+                    df['City'].value_counts(normalize=True) # Proportions</div>
+
+                <h3>13. unique() and nunique()</h3>
+                <div class="code-block">df['City'].unique() # Unique values<br />
+                    df['City'].nunique() # Count of unique values</div>
+            </div>
+        </div>
+
+        <!-- Slide 17: Common Methods - Part 4 -->
+        <div class="slide">
+            <h2 class="slide-header">Common Pandas Methods (Part 4)</h2>
+            <div class="slide-content">
+                <h3>14. apply()</h3>
+                <div class="code-block"># Apply function to column<br />
+                    df['Age'].apply(lambda x: x * 2)<br />
+
+                    # Apply function to DataFrame<br />
+                    df.apply(np.sum, axis=0) # Column-wise<br />
+                    df.apply(np.sum, axis=1) # Row-wise</div>
+
+                <h3>15. merge()</h3>
+                <div class="code-block"># Join DataFrames<br />
+                    pd.merge(df1, df2, on='ID') # Inner join<br />
+                    pd.merge(df1, df2, on='ID', how='left') # Left join<br />
+                    pd.merge(df1, df2, left_on='ID1', right_on='ID2')</div>
+
+                <h3>16. concat()</h3>
+                <div class="code-block"># Concatenate DataFrames<br />
+                    pd.concat([df1, df2]) # Vertical (rows)<br />
+                    pd.concat([df1, df2], axis=1) # Horizontal (columns)</div>
+            </div>
+        </div>
+
+        <!-- Slide 18: Common Methods - Part 5 -->
+        <div class="slide">
+            <h2 class="slide-header">Common Pandas Methods (Part 5)</h2>
+            <div class="slide-content">
+                <h3>17. pivot_table()</h3>
+                <div class="code-block">df.pivot_table(values='Sales',
+                    index='Product',
+                    columns='Region',
+                    aggfunc='sum')</div>
+
+                <h3>18. rename()</h3>
+                <div class="code-block">df.rename(columns={'old_name': 'new_name'})<br />
+                    df.rename(columns=str.upper) # Apply function to all</div>
+
+                <h3>19. astype()</h3>
+                <div class="code-block">df['Age'].astype(int) # Convert to integer<br />
+                    df['Price'].astype(float) # Convert to float<br />
+                    df['Date'].astype('datetime64') # Convert to datetime</div>
+
+                <h3>20. reset_index()</h3>
+                <div class="code-block">df.reset_index() # Reset to default index<br />
+                    df.reset_index(drop=True) # Drop old index</div>
+            </div>
+        </div>
+
+        <!-- Slide 19: Common Methods - Part 6 -->
+        <div class="slide">
+            <h2 class="slide-header">Common Pandas Methods (Part 6)</h2>
+            <div class="slide-content">
+                <h3>21. to_csv() and to_excel()</h3>
+                <div class="code-block">df.to_csv('output.csv', index=False)<br />
+                    df.to_excel('output.xlsx', sheet_name='Data')</div>
+
+                <h3>22. duplicated() and drop_duplicates()</h3>
+                <div class="code-block">df.duplicated() # Check for duplicates<br />
+                    df.drop_duplicates() # Remove duplicates<br />
+                    df.drop_duplicates(subset=['Name']) # Based on column</div>
+
+                <h3>23. sample()</h3>
+                <div class="code-block">df.sample(5) # Random 5 rows<br />
+                    df.sample(frac=0.5) # 50% of data</div>
+
+                <h3>24. nlargest() and nsmallest()</h3>
+                <div class="code-block">df.nlargest(5, 'Age') # Top 5 by Age<br />
+                    df.nsmallest(3, 'Price') # Bottom 3 by Price</div>
+            </div>
+        </div>
+
+        <!-- Slide 20: Data Aggregation -->
+        <div class="slide">
+            <h2 class="slide-header">Data Aggregation Methods</h2>
+            <div class="slide-content">
+                <h3>Statistical Methods</h3>
+                <div class="two-column">
+                    <div class="column-item">
+                        <strong>Basic Stats:</strong>
+                        <div class="code-block" style="margin-top: 10px;">df.sum()<br />
+                            df.mean()<br />
+                            df.median()<br />
+                            df.mode()<br />
+                            df.std()<br />
+                            df.var()</div>
+                    </div>
+                    <div class="column-item">
+                        <strong>Min/Max:</strong>
+                        <div class="code-block" style="margin-top: 10px;">df.min()<br />
+                            df.max()<br />
+                            df.idxmin() # Index of min<br />
+                            df.idxmax() # Index of max</div>
+                    </div>
+                </div>
+
+                <h3>Counting Methods</h3>
+                <div class="code-block">df.count() # Non-null values<br />
+                    df.nunique() # Unique values count<br />
+                    df.value_counts() # Frequency of values</div>
+
+                <h3>Correlation and Covariance</h3>
+                <div class="code-block">df.corr() # Correlation matrix<br />
+                    df.cov() # Covariance matrix</div>
+            </div>
+        </div>
+
+        <!-- Slide 21: String Methods -->
+        <div class="slide">
+            <h2 class="slide-header">String Methods (.str)</h2>
+            <div class="slide-content">
+                <h3>String Manipulation</h3>
+                <div class="code-block"># Convert case<br />
+                    df['Name'].str.lower()<br />
+                    df['Name'].str.upper()<br />
+                    df['Name'].str.title()<br />
+
+                    # String operations<br />
+                    df['Name'].str.contains('alice', case=False)<br />
+                    df['Name'].str.startswith('A')<br />
+                    df['Name'].str.endswith('e')<br />
+
+                    # Replace and strip<br />
+                    df['Name'].str.replace('Alice', 'Alicia')<br />
+                    df['Name'].str.strip() # Remove whitespace<br />
+                    df['Name'].str.split(' ') # Split into list</div>
+
+                <h3>Extracting Information</h3>
+                <div class="code-block"># Length<br />
+                    df['Name'].str.len()<br />
+
+                    # Slice<br />
+                    df['Name'].str[:3] # First 3 characters<br />
+
+                    # Extract with regex<br />
+                    df['Email'].str.extract(r'(\w+)@')</div>
+            </div>
+        </div>
+
+        <!-- Slide 22: DateTime Methods -->
+        <div class="slide">
+            <h2 class="slide-header">DateTime Methods</h2>
+            <div class="slide-content">
+                <h3>Converting to DateTime</h3>
+                <div class="code-block">df['Date'] = pd.to_datetime(df['Date'])<br />
+
+                    # With format specification<br />
+                    df['Date'] = pd.to_datetime(df['Date'], format='%Y-%m-%d')</div>
+
+                <h3>Extracting Date Components</h3>
+                <div class="code-block">df['Year'] = df['Date'].dt.year<br />
+                    df['Month'] = df['Date'].dt.month<br />
+                    df['Day'] = df['Date'].dt.day<br />
+                    df['DayOfWeek'] = df['Date'].dt.dayofweek<br />
+                    df['DayName'] = df['Date'].dt.day_name()<br />
+                    df['Quarter'] = df['Date'].dt.quarter</div>
+
+                <h3>Date Arithmetic</h3>
+                <div class="code-block"># Add/subtract days<br />
+                    df['Date'] + pd.Timedelta(days=7)<br />
+
+                    # Difference between dates<br />
+                    (df['End_Date'] - df['Start_Date']).dt.days</div>
+            </div>
+        </div>
+
+        <!-- Slide 23: Advanced Indexing -->
+        <div class="slide">
+            <h2 class="slide-header">Advanced Indexing Techniques</h2>
+            <div class="slide-content">
+                <h3>Setting Index</h3>
+                <div class="code-block">df.set_index('Name') # Set column as index<br />
+                    df.set_index(['City', 'Name']) # Multi-level index</div>
+
+                <h3>Boolean Indexing</h3>
+                <div class="code-block"># Single condition<br />
+                    df[df['Age'] > 30]<br />
+
+                    # Multiple conditions (AND)<br />
+                    df[(df['Age'] > 25) & (df['City'] == 'NYC')]<br />
+
+                    # Multiple conditions (OR)<br />
+                    df[(df['Age'] > 30) | (df['City'] == 'London')]<br />
+
+                    # Using isin()<br />
+                    df[df['City'].isin(['NYC', 'London', 'Paris'])]<br />
+
+                    # Using between()<br />
+                    df[df['Age'].between(25, 35)]</div>
+
+                <h3>Query Method</h3>
+                <div class="code-block">df.query('Age > 30')<br />
+                    df.query('Age > 30 and City == "NYC"')</div>
+            </div>
+        </div>
+
+        <!-- Slide 24: Data Transformation -->
+        <div class="slide">
+            <h2 class="slide-header">Data Transformation</h2>
+            <div class="slide-content">
+                <h3>Creating New Columns</h3>
+                <div class="code-block"># Simple calculation<br />
+                    df['Age_Double'] = df['Age'] * 2<br />
+
+                    # Conditional creation<br />
+                    df['Age_Group'] = df['Age'].apply(
+                    lambda x: 'Young' if x < 30 else 'Senior' ) # Using np.where df['Category']=np.where(df['Age']> 30,
+                        'Adult', 'Young')</div>
+
+                <h3>Binning Data</h3>
+                <div class="code-block"># Cut into bins<br />
+                    df['Age_Bin'] = pd.cut(df['Age'],
+                    bins=[0, 25, 35, 50],
+                    labels=['Young', 'Middle', 'Senior'])
+
+                    # Equal-width bins
+                    df['Age_Qcut'] = pd.qcut(df['Age'], q=3,
+                    labels=['Low', 'Med', 'High'])</div>
+
+                <h3>Mapping Values</h3>
+                <div class="code-block">mapping = {'A': 1, 'B': 2, 'C': 3}<br />
+                    df['Grade_Num'] = df['Grade'].map(mapping)</div>
+            </div>
+        </div>
+
+        <!-- Slide 25: Handling Missing Data -->
+        <div class="slide">
+            <h2 class="slide-header">Handling Missing Data</h2>
+            <div class="slide-content">
+                <h3>Detecting Missing Data</h3>
+                <div class="code-block">df.isnull() # Boolean mask<br />
+                    df.isnull().sum() # Count per column<br />
+                    df.isnull().sum().sum() # Total count</div>
+
+                <h3>Filling Missing Data</h3>
+                <div class="code-block"># Fill with value<br />
+                    df.fillna(0)<br />
+
+                    # Forward fill<br />
+                    df.fillna(method='ffill')<br />
+
+                    # Backward fill<br />
+                    df.fillna(method='bfill')<br />
+
+                    # Fill with mean/median<br />
+                    df['Age'].fillna(df['Age'].mean())<br />
+                    df['Price'].fillna(df['Price'].median())<br />
+
+                    # Fill with mode<br />
+                    df['Category'].fillna(df['Category'].mode()[0])</div>
+
+                <h3>Dropping Missing Data</h3>
+                <div class="code-block">df.dropna() # Drop any row with null<br />
+                    df.dropna(axis=1) # Drop any column with null<br />
+                    df.dropna(thresh=3) # Keep rows with ≥3 non-null</div>
+            </div>
+        </div>
+
+        <!-- Slide 26: Merging and Joining -->
+        <div class="slide">
+            <h2 class="slide-header">Merging and Joining DataFrames</h2>
+            <div class="slide-content">
+                <h3>Types of Joins</h3>
+                <div class="code-block"># Inner join (default)<br />
+                    pd.merge(df1, df2, on='ID', how='inner')<br />
+
+                    # Left join<br />
+                    pd.merge(df1, df2, on='ID', how='left')<br />
+
+                    # Right join<br />
+                    pd.merge(df1, df2, on='ID', how='right')<br />
+
+                    # Outer join<br />
+                    pd.merge(df1, df2, on='ID', how='outer')</div>
+
+                <h3>Join on Multiple Columns</h3>
+                <div class="code-block">pd.merge(df1, df2, on=['City', 'Date'])</div>
+
+                <h3>Join with Different Column Names</h3>
+                <div class="code-block">pd.merge(df1, df2,
+                    left_on='Employee_ID',
+                    right_on='EmpID')</div>
+
+                <h3>Concatenation</h3>
+                <div class="code-block">pd.concat([df1, df2], ignore_index=True)</div>
+            </div>
+        </div>
+
+        <!-- Slide 27: Pivot and Melt -->
+        <div class="slide">
+            <h2 class="slide-header">Reshaping Data: Pivot and Melt</h2>
+            <div class="slide-content">
+                <h3>Pivot Table</h3>
+                <div class="code-block">df.pivot_table(
+                    values='Sales',
+                    index='Product',
+                    columns='Region',
+                    aggfunc='sum',
+                    fill_value=0
+                    )</div>
+
+                <h3>Pivot (Reshape)</h3>
+                <div class="code-block">df.pivot(index='Date',
+                    columns='Product',
+                    values='Sales')</div>
+
+                <h3>Melt (Unpivot)</h3>
+                <div class="code-block"># Convert wide to long format<br />
+                    pd.melt(df,
+                    id_vars=['ID', 'Name'],
+                    value_vars=['Jan', 'Feb', 'Mar'],
+                    var_name='Month',
+                    value_name='Sales')</div>
+            </div>
+        </div>
+
+        <!-- Slide 28: Window Functions -->
+        <div class="slide">
+            <h2 class="slide-header">Window Functions</h2>
+            <div class="slide-content">
+                <h3>Rolling Windows</h3>
+                <div class="code-block"># Moving average<br />
+                    df['Sales'].rolling(window=3).mean()<br />
+
+                    # Rolling sum<br />
+                    df['Sales'].rolling(window=7).sum()<br />
+
+                    # Rolling with min periods<br />
+                    df['Sales'].rolling(window=3, min_periods=1).mean()</div>
+
+                <h3>Expanding Windows</h3>
+                <div class="code-block"># Cumulative sum<br />
+                    df['Sales'].expanding().sum()<br />
+
+                    # Cumulative mean<br />
+                    df['Sales'].expanding().mean()</div>
+
+                <h3>Shift and Diff</h3>
+                <div class="code-block"># Shift values<br />
+                    df['Sales'].shift(1) # Lag by 1<br />
+                    df['Sales'].shift(-1) # Lead by 1<br />
+
+                    # Difference<br />
+                    df['Sales'].diff() # Current - Previous</div>
+            </div>
+        </div>
+
+        <!-- Slide 29: Performance Tips -->
+        <div class="slide">
+            <h2 class="slide-header">Performance Optimization Tips</h2>
+            <div class="slide-content">
+                <h3>1. Use Vectorized Operations</h3>
+                <div class="code-block"># Slow (iteration)<br />
+                    for i in range(len(df)):<br />
+                        df.loc[i, 'Result'] = df.loc[i, 'A'] * 2
+
+                    # Fast (vectorized)<br />
+                    df['Result'] = df['A'] * 2</div>
+
+                <h3>2. Use Appropriate Data Types</h3>
+                <div class="code-block"># Optimize memory<br />
+                    df['Category'] = df['Category'].astype('category')<br />
+                    df['Age'] = df['Age'].astype('int8') # If values fit</div>
+
+                <h3>3. Read CSV Efficiently</h3>
+                <div class="code-block">df = pd.read_csv('data.csv',
+                    usecols=['Name', 'Age'], # Only needed cols
+                    dtype={'Age': 'int8'}, # Specify types
+                    nrows=10000) # Limit rows</div>
+
+                <h3>4. Use Query for Large DataFrames</h3>
+                <div class="code-block">df.query('Age > 30') # Faster than boolean indexing</div>
+            </div>
+        </div>
+
+        <!-- Slide 30: Visualization with Pandas -->
+        <div class="slide">
+            <h2 class="slide-header">Basic Visualization</h2>
+            <div class="slide-content">
+                <h3>Built-in Plotting</h3>
+                <div class="code-block">import matplotlib.pyplot as plt<br />
+
+                    # Line plot<br />
+                    df['Sales'].plot()<br />
+
+                    # Bar plot<br />
+                    df['Product'].value_counts().plot(kind='bar')<br />
+
+                    # Histogram<br />
+                    df['Age'].plot(kind='hist', bins=20)<br />
+
+                    # Box plot<br />
+                    df.boxplot(column='Age', by='City')<br />
+
+                    # Scatter plot<br />
+                    df.plot(kind='scatter', x='Age', y='Salary')<br />
+
+                    # Multiple plots<br />
+                    df.plot(subplots=True, figsize=(10, 8))</div>
+
+                <h3>Customization</h3>
+                <div class="code-block">df['Sales'].plot(
+                    title='Sales Over Time',
+                    xlabel='Date',
+                    ylabel='Revenue',
+                    color='green',
+                    figsize=(12, 6)
+                    )<br />
+                    plt.show()</div>
+            </div>
+        </div>
+
+        <!-- Slide 31: Best Practices -->
+        <div class="slide">
+            <h2 class="slide-header">Pandas Best Practices</h2>
+            <div class="slide-content">
+                <h3>1. Chain Operations</h3>
+                <div class="code-block">result = (df
+                    .query('Age > 25')
+                    .groupby('City')
+                    .agg({'Sales': 'sum', 'Age': 'mean'})
+                    .reset_index()
+                    .sort_values('Sales', ascending=False)
+                    )</div>
+
+                <h3>2. Use inplace=True Carefully</h3>
+                <div class="code-block"># Avoid (doesn't work in chains)<br />
+                    df.dropna(inplace=True)<br />
+
+                    # Prefer<br />
+                    df = df.dropna()</div>
+
+                <h3>3. Copy When Needed</h3>
+                <div class="code-block"># Create a copy to avoid modifying original
+                    df_copy = df.copy()</div>
+
+                <h3>4. Use Method Chaining</h3>
+                <div class="code-block">df.pipe(clean_data).pipe(transform_data).pipe(analyze)</div>
+            </div>
+        </div>
+
+        <!-- Slide 32: Common Use Cases -->
+        <div class="slide">
+            <h2 class="slide-header">Common Use Cases</h2>
+            <div class="slide-content">
+                <h3>1. Data Cleaning Pipeline</h3>
+                <div class="code-block">df = (pd.read_csv('data.csv')
+                    .drop_duplicates()
+                    .dropna(subset=['important_col'])
+                    .assign(Date=lambda x: pd.to_datetime(x['Date']))
+                    .query('Age > 0')
+                    .reset_index(drop=True)
+                    )</div>
+
+                <h3>2. Aggregation Report</h3>
+                <div class="code-block">report = (df.groupby(['Region', 'Product']).agg({
+                    'Sales': ['sum', 'mean', 'count'],
+                    'Profit': 'sum'
+                    }).round(2))
+                </div>
+
+                <h3>3. Time Series Analysis</h3>
+                <div class="code-block">df['Date'] = pd.to_datetime(df['Date'])<br />
+                    df = df.set_index('Date')<br />
+                    monthly_avg = df.resample('M').mean()<br />
+                    df['MA_7'] = df['Sales'].rolling(7).mean()</div>
+            </div>
+        </div>
+
+        <!-- Slide 33: Summary -->
+        <div class="slide">
+            <h2 class="slide-header">Summary: Essential Methods</h2>
+            <div class="slide-content">
+                <table>
+                    <tr>
+                        <th>Category</th>
+                        <th>Methods</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Viewing Data</strong></td>
+                        <td>head(), tail(), info(), describe(), shape</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Selection</strong></td>
+                        <td>loc[], iloc[], [ ], query()</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Missing Data</strong></td>
+                        <td>isnull(), dropna(), fillna()</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data Cleaning</strong></td>
+                        <td>drop(), drop_duplicates(), rename(), astype()</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Aggregation</strong></td>
+                        <td>groupby(), agg(), pivot_table(), value_counts()</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sorting</strong></td>
+                        <td>sort_values(), sort_index(), nlargest(), nsmallest()</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Merging</strong></td>
+                        <td>merge(), concat(), join()</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Transformation</strong></td>
+                        <td>apply(), map(), replace(), cut()</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Slide 34: Conclusion -->
+        <div class="slide">
+            <h2 class="slide-header">Conclusion</h2>
+            <div class="slide-content">
+                <h3>Why Pandas is Essential</h3>
+                <ul>
+                    <li><span class="highlight">Industry Standard:</span> Most popular library for data analysis in
+                        Python</li>
+                    <li><span class="highlight">Versatile:</span> Handles structured data from various sources</li>
+                    <li><span class="highlight">Powerful:</span> Comprehensive data manipulation capabilities</li>
+                    <li><span class="highlight">Efficient:</span> Built on NumPy for fast operations</li>
+                </ul>
+
+                <h3>Key Takeaways</h3>
+                <ul>
+                    <li><strong>Series:</strong> 1D labeled array for single column data</li>
+                    <li><strong>DataFrame:</strong> 2D labeled data structure (primary tool)</li>
+                    <li><strong>Methods:</strong> Rich set of built-in methods for every operation</li>
+                    <li><strong>Integration:</strong> Works seamlessly with NumPy, Matplotlib, scikit-learn</li>
+                </ul>
+
+                <div class="feature-box" style="margin-top: 30px;">
+                    <h4>Next Steps</h4>
+                    <p>Practice with real datasets, explore advanced features like multi-indexing, and combine Pandas
+                        with visualization libraries for comprehensive data analysis!</p>
+                </div>
+
+                <p style="margin-top: 30px; text-align: center; font-size: 1.3em; color: #11998e;"><strong>Master Pandas
+                        to become a data analysis expert!</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-counter">
+        <span id="current-slide">1</span> / <span id="total-slides">34</span>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn pandas-btn-nav" id="prev-btn">← Previous</button>
+        <button class="nav-btn pandas-btn-nav" id="next-btn">Next →</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const currentSlideSpan = document.getElementById('current-slide');
+        const totalSlidesSpan = document.getElementById('total-slides');
+
+        totalSlidesSpan.textContent = totalSlides;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            currentSlideSpan.textContent = currentSlide + 1;
+
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === totalSlides - 1;
+        }
+
+        prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
+        nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
+            if (e.key === 'ArrowRight') showSlide(currentSlide + 1);
+        });
+
+        showSlide(0);
+    </script>
+</body>
+
+</html>
