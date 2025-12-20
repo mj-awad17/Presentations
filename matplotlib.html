@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Matplotlib Presentation</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="presentation-page matplotlib-bg">
+	<div class="back-home">
+		<a class="back-home-btn" href="index.html">← Home</a>
+	</div>
+	<div class="presentation-container">
+		<!-- Slide 1: Title -->
+		<div class="slide active title-slide">
+			<h1 class="matplotlib-title">Matplotlib</h1>
+			<p>Plotting library for Python</p>
+			<p style="margin-top: 20px; color: #999;">Create static, interactive, and animated visualizations</p>
+		</div>
+
+		<!-- Slide: Installation -->
+		<div class="slide">
+			<h2 class="slide-header">Installation</h2>
+			<div class="slide-content">
+				<p>Install Matplotlib using pip:</p>
+				<div class="code-block">pip install matplotlib</div>
+				<p>Matplotlib works well with NumPy and Pandas and integrates with Jupyter notebooks.</p>
+			</div>
+		</div>
+
+		<!-- Slide 2: Introduction -->
+		<div class="slide">
+			<h2 class="slide-header matplotlib-header">1. Introduction to Matplotlib</h2>
+			<div class="slide-content">
+				<p><strong>Matplotlib</strong> is a comprehensive library for creating static, animated, and interactive visualizations in Python. It provides a flexible interface via the <code>pyplot</code> API and a low-level object-oriented API.</p>
+
+				<h3>Why use Matplotlib?</h3>
+				<ul>
+					<li><span class="highlight">Flexibility:</span> Fine-grained control over plots and axes</li>
+					<li><span class="highlight">Integration:</span> Works with NumPy, Pandas, and Jupyter</li>
+					<li><span class="highlight">Variety:</span> Wide range of plot types and customizations</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- Slide 3: Basic Line Plot -->
+		<div class="slide">
+			<h2 class="slide-header">2. Line, Bar & Scatter Plots</h2>
+			<div class="slide-content">
+				<h3>Line Plot</h3>
+				<div class="code-block">import matplotlib.pyplot as plt<br/>import numpy as np<br/>x = np.linspace(0, 10, 100)<br/>y = np.sin(x)<br/>plt.plot(x, y)<br/>plt.show()</div>
+				<div class="output-block">Produces a simple sine wave line plot.</div>
+
+				<h3>Bar & Scatter</h3>
+				<div class="code-block">plt.bar(['A','B','C'], [5, 7, 3])  # Bar plot<br/>plt.scatter(x, y)  # Scatter plot</div>
+                
+				<div class="charts-row">
+					<div class="chart-visual" aria-hidden="true">
+						<!-- Line chart visual (SVG) -->
+						<svg viewBox="0 0 100 50" preserveAspectRatio="none" role="img" aria-label="Line chart example">
+							<polyline fill="none" stroke="#ff7f0e" stroke-width="2" points="0,40 10,30 20,20 30,25 40,15 50,20 60,10 70,20 80,12 90,18 100,8"/>
+						</svg>
+					</div>
+
+					<div class="chart-visual" aria-hidden="true">
+						<!-- Bar chart visual (SVG) -->
+						<svg viewBox="0 0 100 50" role="img" aria-label="Bar chart example">
+							<rect x="8" y="20" width="16" height="30" fill="#ff7f0e" />
+							<rect x="40" y="10" width="16" height="40" fill="#ffbb78" />
+							<rect x="72" y="28" width="16" height="22" fill="#ff7f0e" />
+						</svg>
+					</div>
+
+					<div class="chart-visual" aria-hidden="true">
+						<!-- Scatter chart visual (SVG) -->
+						<svg viewBox="0 0 100 50" role="img" aria-label="Scatter chart example">
+							<circle cx="18" cy="32" r="2.5" fill="#ff7f0e" />
+							<circle cx="36" cy="18" r="2.5" fill="#ffbb78" />
+							<circle cx="54" cy="12" r="2.5" fill="#ff7f0e" />
+							<circle cx="72" cy="26" r="2.5" fill="#ffbb78" />
+							<circle cx="88" cy="20" r="2.5" fill="#ff7f0e" />
+						</svg>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Slide: Bar Plot Example -->
+		<div class="slide">
+			<h2 class="slide-header">Bar Plot Example</h2>
+			<div class="slide-content">
+				<div class="code-block">categories = ['A','B','C','D','E']<br/>values = [5,7,3,8,6]<br/>plt.figure(figsize=(8,5))<br/>plt.bar(categories, values, color='orange')<br/>plt.title('Bar Plot Example')<br/>plt.show()</div>
+				<div class="charts-row">
+					<div class="chart-visual" aria-hidden="true">
+						<svg viewBox="0 0 100 50" role="img" aria-label="Bar plot example">
+							<rect x="6" y="18" width="12" height="32" fill="#ff7f0e" />
+							<rect x="26" y="8" width="12" height="42" fill="#ffbb78" />
+							<rect x="46" y="26" width="12" height="24" fill="#ff7f0e" />
+							<rect x="66" y="6" width="12" height="44" fill="#ffbb78" />
+							<rect x="86" y="16" width="12" height="34" fill="#ff7f0e" />
+						</svg>
+						<div class="chart-caption">Bar Plot Output</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Slide: Histogram Example -->
+		<div class="slide">
+			<h2 class="slide-header">Histogram Example</h2>
+			<div class="slide-content">
+				<div class="code-block">import numpy as np<br/>data = np.random.randn(1000)<br/>plt.figure(figsize=(8,5))<br/>plt.hist(data, bins=30, color='green', alpha=0.7)<br/>plt.title('Histogram Example')<br/>plt.show()</div>
+				<div class="charts-row">
+					<div class="chart-visual" aria-hidden="true">
+						<svg viewBox="0 0 100 50" role="img" aria-label="Histogram example">
+							<rect x="4" y="30" width="8" height="20" fill="#6bbf59" />
+							<rect x="16" y="22" width="8" height="28" fill="#6bbf59" />
+							<rect x="28" y="12" width="8" height="38" fill="#6bbf59" />
+							<rect x="40" y="18" width="8" height="32" fill="#6bbf59" />
+							<rect x="52" y="26" width="8" height="24" fill="#6bbf59" />
+							<rect x="64" y="34" width="8" height="16" fill="#6bbf59" />
+							<rect x="76" y="28" width="8" height="22" fill="#6bbf59" />
+						</svg>
+						<div class="chart-caption">Histogram Output</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Slide: Scatter Plot Example -->
+		<div class="slide">
+			<h2 class="slide-header">Scatter Plot Example</h2>
+			<div class="slide-content">
+				<div class="code-block">import numpy as np<br/>x = np.random.rand(50)<br/>y = np.random.rand(50)<br/>plt.figure(figsize=(8,5))<br/>plt.scatter(x, y, color='red', alpha=0.5)<br/>plt.title('Scatter Plot Example')<br/>plt.show()</div>
+				<div class="charts-row">
+					<div class="chart-visual" aria-hidden="true">
+						<svg viewBox="0 0 100 50" role="img" aria-label="Scatter example">
+							<circle cx="12" cy="36" r="2.5" fill="#e74c3c" />
+							<circle cx="30" cy="18" r="2.5" fill="#e74c3c" />
+							<circle cx="48" cy="24" r="2.5" fill="#e74c3c" />
+							<circle cx="66" cy="12" r="2.5" fill="#e74c3c" />
+							<circle cx="84" cy="30" r="2.5" fill="#e74c3c" />
+						</svg>
+						<div class="chart-caption">Scatter Output</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Slide: Pie Chart Example -->
+		<div class="slide">
+			<h2 class="slide-header">Pie Chart Example</h2>
+			<div class="slide-content">
+				<div class="code-block">sizes = [15, 30, 45, 10]<br/>labels = ['A','B','C','D']<br/>colors = ['gold','lightskyblue','lightcoral','lightgray']<br/>plt.figure(figsize=(8,5))<br/>plt.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=140)<br/>plt.axis('equal')<br/>plt.title('Pie Chart Example')<br/>plt.show()</div>
+				<div class="charts-row">
+					<div class="chart-visual" aria-hidden="true">
+						<svg viewBox="0 0 100 100" role="img" aria-label="Pie example">
+							<circle cx="50" cy="50" r="40" fill="none" stroke="gold" stroke-width="80" stroke-dasharray="60 240" transform="rotate(-90 50 50)" />
+							<circle cx="50" cy="50" r="40" fill="none" stroke="lightskyblue" stroke-width="80" stroke-dasharray="120 180" transform="rotate(-30 50 50)" />
+							<circle cx="50" cy="50" r="40" fill="none" stroke="lightcoral" stroke-width="80" stroke-dasharray="180 120" transform="rotate(30 50 50)" />
+						</svg>
+						<div class="chart-caption">Pie Chart Output (schematic)</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Slide 4: Custom Styling -->
+		<div class="slide">
+			<h2 class="slide-header">3. Custom Styling</h2>
+			<div class="slide-content">
+				<h3>Colors, Linestyles & Markers</h3>
+				<div class="code-block">plt.plot(x, y, color='orange', linestyle='--', marker='o')<br/>plt.title('Styled Plot')<br/>plt.xlabel('x')<br/>plt.ylabel('sin(x)')</div>
+				<div class="output-block">Use color names, hex codes, and pre-defined styles.</div>
+
+				<h3>Using Styles</h3>
+				<div class="code-block">plt.style.use('seaborn')  # Use prebuilt theme</div>
+
+				<!-- Customization example visual -->
+				<div class="charts-row" style="margin-top:18px;">
+					<div class="chart-visual" aria-hidden="true">
+						<svg viewBox="0 0 100 50" preserveAspectRatio="none" role="img" aria-label="Customized sin wave">
+							<polyline fill="none" stroke="#8e44ad" stroke-dasharray="4 3" stroke-width="2" points="0,30 10,20 20,15 30,18 40,10 50,12 60,8 70,20 80,14 90,16 100,10" />
+						</svg>
+						<div class="chart-caption">Customized Sin Wave (schematic)</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Slide 5: Figures & Axes -->
+		<div class="slide">
+			<h2 class="slide-header">4. Figures and Axes</h2>
+			<div class="slide-content">
+				<h3>Object-oriented API</h3>
+				<div class="code-block">fig, ax = plt.subplots(figsize=(8,4))<br/>ax.plot(x, y)<br/>ax.set_title('Figure & Axes Example')</div>
+				<div class="output-block">Create multiple axes and customize each independently.</div>
+			</div>
+		</div>
+
+		<!-- Slide 6: Subplots -->
+		<div class="slide">
+			<h2 class="slide-header">5. Subplots & Layout</h2>
+			<div class="slide-content">
+				<h3>Simple Subplots</h3>
+				<div class="code-block">fig, axs = plt.subplots(2, 2, figsize=(10,6))<br/>axs[0,0].plot(x, np.sin(x))<br/>axs[0,1].plot(x, np.cos(x))</div>
+				<div class="output-block">Use GridSpec or constrained_layout for advanced layouts.</div>
+                
+				<div class="charts-row">
+					<div class="chart-visual" style="width:150px;">
+						<svg viewBox="0 0 100 50" preserveAspectRatio="none" role="img" aria-label="subplot 1">
+							<polyline fill="none" stroke="#ff7f0e" stroke-width="1.8" points="0,40 20,30 40,20 60,25 80,15 100,20"/>
+						</svg>
+					</div>
+					<div class="chart-visual" style="width:150px;">
+						<svg viewBox="0 0 100 50" role="img" aria-label="subplot 2">
+							<polyline fill="none" stroke="#ffbb78" stroke-width="1.8" points="0,30 20,18 40,10 60,20 80,12 100,16"/>
+						</svg>
+					</div>
+					<div class="chart-visual" style="width:150px;">
+						<svg viewBox="0 0 100 50" role="img" aria-label="subplot 3">
+							<rect x="8" y="20" width="16" height="30" fill="#ff7f0e" />
+							<rect x="36" y="12" width="16" height="38" fill="#ffbb78" />
+						</svg>
+					</div>
+					<div class="chart-visual" style="width:150px;">
+						<svg viewBox="0 0 100 50" role="img" aria-label="subplot 4">
+							<circle cx="22" cy="30" r="2.5" fill="#ff7f0e" />
+							<circle cx="46" cy="18" r="2.5" fill="#ffbb78" />
+							<circle cx="70" cy="12" r="2.5" fill="#ff7f0e" />
+						</svg>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Slide 7: Images & Saving -->
+		<div class="slide">
+			<h2 class="slide-header">6. Saving Figures & Images</h2>
+			<div class="slide-content">
+				<h3>Save as PNG, SVG, PDF</h3>
+				<div class="code-block">plt.savefig('figure.png', dpi=300, bbox_inches='tight')</div>
+				<div class="output-block">Export high-quality figures for reports and publications.</div>
+
+				<h3>Displaying Images</h3>
+				<div class="code-block">import matplotlib.image as mpimg<br/>img = mpimg.imread('image.png')<br/>plt.imshow(img)</div>
+			</div>
+		</div>
+
+		<!-- Slide 8: Interactive Backends -->
+		<div class="slide">
+			<h2 class="slide-header">7. Interactive Backends</h2>
+			<div class="slide-content">
+				<p>Matplotlib supports interactive backends (Qt, Tk, WebAgg) that allow zooming, panning, and GUI integration.</p>
+				<div class="code-block"># In Jupyter use<br/>%matplotlib widget  # interactive<br/>%matplotlib inline   # static</div>
+			</div>
+		</div>
+
+		<!-- Slide 9: Animations -->
+		<div class="slide">
+			<h2 class="slide-header">8. Animations</h2>
+			<div class="slide-content">
+				<h3>Basic Animation</h3>
+				<div class="code-block">from matplotlib import animation<br/>fig, ax = plt.subplots()<br/>line, = ax.plot([], [])<br/>def init(): line.set_data([], []); return line<br/>def update(i): line.set_data(x[:i], y[:i]); return line<br/>ani = animation.FuncAnimation(fig, update, frames=100, init_func=init)</div>
+				<div class="output-block">Create animated plots for dynamic visualizations.</div>
+			</div>
+		</div>
+
+		<!-- Slide 10: Working with Pandas & NumPy -->
+		<div class="slide">
+			<h2 class="slide-header">9. Using Matplotlib with Pandas & NumPy</h2>
+			<div class="slide-content">
+				<div class="code-block">import pandas as pd<br/>df.plot(kind='line')  # Pandas wrapper around Matplotlib</div>
+				<div class="output-block">Pandas provides convenient plotting wrappers using Matplotlib.</div>
+			</div>
+		</div>
+
+		<!-- Slide 11: Tips & Best Practices -->
+		<div class="slide">
+			<h2 class="slide-header">10. Tips & Best Practices</h2>
+			<div class="slide-content">
+				<ul>
+					<li>Prefer the object-oriented API for complex figures</li>
+					<li>Use styles and rcParams for consistent theme across figures</li>
+					<li>Save at high DPI for publication-quality images</li>
+					<li>Use interactive backends during exploration, static for reports</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- Slide 12: Conclusion -->
+		<div class="slide">
+			<h2 class="slide-header">11. Conclusion</h2>
+			<div class="slide-content">
+				<h3>Key Takeaways</h3>
+				<ul>
+					<li>Matplotlib is the foundation of Python plotting</li>
+					<li>Highly customizable with both pyplot and OO APIs</li>
+					<li>Integrates well with NumPy and Pandas for data visualization</li>
+					<li>Use styles, subplots, and saving options for production-ready figures</li>
+				</ul>
+
+				<p style="margin-top: 30px; text-align: center; font-size: 1.2em; color: #ff7f0e;"><strong>Master Matplotlib to visualize your data effectively!</strong></p>
+			</div>
+		</div>
+	</div>
+
+	<div class="slide-counter">
+		<span id="current-slide">1</span> / <span id="total-slides">11</span>
+	</div>
+
+	<div class="navigation">
+		<button class="nav-btn matplotlib-btn-nav" id="prev-btn">← Previous</button>
+		<button class="nav-btn matplotlib-btn-nav" id="next-btn">Next →</button>
+	</div>
+
+	<script>
+		let currentSlide = 0;
+		const slides = document.querySelectorAll('.slide');
+		const totalSlides = slides.length;
+		const prevBtn = document.getElementById('prev-btn');
+		const nextBtn = document.getElementById('next-btn');
+		const currentSlideSpan = document.getElementById('current-slide');
+		const totalSlidesSpan = document.getElementById('total-slides');
+
+		totalSlidesSpan.textContent = totalSlides;
+
+		function showSlide(n) {
+			slides[currentSlide].classList.remove('active');
+			currentSlide = (n + totalSlides) % totalSlides;
+			slides[currentSlide].classList.add('active');
+			currentSlideSpan.textContent = currentSlide + 1;
+
+			prevBtn.disabled = currentSlide === 0;
+			nextBtn.disabled = currentSlide === totalSlides - 1;
+		}
+
+		prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
+		nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
+
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
+			if (e.key === 'ArrowRight') showSlide(currentSlide + 1);
+		});
+
+		showSlide(0);
+	</script>
+</body>
+
+</html>

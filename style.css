@@ -737,3 +737,9 @@ tr:hover {
     transition: color 0.3s ease;
     
 }
+
+.matplotlib-title{
+    background: linear-gradient(135deg, #ff7f0e 0%, #1c2a41 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
